@@ -13,7 +13,7 @@ Boolean Implementation_BooleanOf(Scope* s,Token* a){
         }else{
             printf("[Int_Boolean]: 1. Arg: Variable %s doesn't exist!\n",a->str);
         }
-    }else if(a->tt==TOKEN_LUALIKE_BOOLEAN){
+    }else if(a->tt==TOKEN_BOOL){
         n = Boolean_Parse(a->str);
     }else{
         printf("[Int_Boolean]: 1. Arg: %s is not a int type!\n",a->str);
@@ -36,7 +36,7 @@ Token Boolean_Boolean_Handler_Ass(Scope* s,Token* op,Vector* args){
         }else{
             printf("[Boolean_Ass]: 2. Arg: Variable %s doesn't exist!\n",b->str);
         }
-    }else if(b->tt==TOKEN_LUALIKE_BOOLEAN){
+    }else if(b->tt==TOKEN_BOOL){
         n2 = Boolean_Parse(b->str);
     }else{
         printf("[Boolean_Ass]: 2. Arg: %s is not a bool type!\n",b->str);
@@ -57,7 +57,7 @@ Token Boolean_Boolean_Handler_Ass(Scope* s,Token* op,Vector* args){
     Boolean res = n2;
 
     char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_LUALIKE_BOOLEAN,resstr);
+    return Token_Move(TOKEN_BOOL,resstr);
 }
 Token Boolean_Boolean_Handler_Equ(Scope* s,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
@@ -70,7 +70,7 @@ Token Boolean_Boolean_Handler_Equ(Scope* s,Token* op,Vector* args){
     Boolean res = n1 == n2;
 
     char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_LUALIKE_BOOLEAN,resstr);
+    return Token_Move(TOKEN_BOOL,resstr);
 }
 Token Boolean_Handler_Cast(Scope* s,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
